@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<!-- saved from url=(0072)file:///Users/yaotzin/Desktop/MundoCancel1/nuevo2026/inicio%20/logo.html -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<style>
+  body {
+    background-color: #0a0a1a;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    overflow: hidden;
+  }
+
+  .logo-container {
+    position: relative;
+    font-family: 'Arial', sans-serif; /* Replace with your font */
+    font-size: 4rem;
+    color: #00f3ff;
+    text-transform: lowercase;
+    font-weight: bold;
+    /* Initial state: Hidden */
+    opacity: 0; 
+  }
+
+  /* The Symbol (Circle + Line) */
+  .symbol {
+    display: inline-block;
+    width: 60px;
+    height: 60px;
+    border: 2px solid #00f3ff;
+    border-radius: 50%;
+    position: relative;
+    margin-right: 10px;
+    /* Wireframe effect using dashed borders initially */
+    border-style: dashed; 
+  }
+  
+  .symbol::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: -20px;
+    width: 100px;
+    height: 2px;
+    background: #00f3ff;
+    transform: translateY(-50%);
+  }
+
+  /* The Text */
+  .text {
+    position: relative;
+  }
+
+  /* --- ANIMATION SEQUENCE (4 Seconds Total) --- */
+  
+  .logo-container {
+    animation: splashSequence 4s ease-in-out forwards;
+  }
+
+  @keyframes splashSequence {
+    /* PHASE 1: 0.0s - 1.5s (Initialization / Wireframe) */
+    0% {
+      opacity: 0;
+      transform: scale(0.8);
+      filter: blur(5px);
+    }
+    10% {
+      opacity: 0.5; /* Ghostly wireframe appearance */
+      transform: scale(0.8);
+      /* Simulating wireframe by using only borders */
+      text-shadow: none;
+      color: transparent;
+      -webkit-text-stroke: 1px #00f3ff; 
+    }
+    35% {
+      opacity: 0.8;
+      transform: scale(0.85);
+    }
+
+    /* PHASE 2: 1.5s - 2.5s (Glitch / Stabilization) */
+    37% {
+      /* Hard cut to solid */
+      opacity: 1;
+      color: #00f3ff;
+      -webkit-text-stroke: 0;
+      transform: scale(0.85) skewX(10deg);
+      text-shadow: -2px 0 red, 2px 0 blue; /* Chromatic Aberration */
+    }
+    40% {
+      transform: scale(0.85) skewX(-5deg);
+      text-shadow: 2px 0 red, -2px 0 blue;
+    }
+    45% {
+      transform: scale(0.85) skewX(0deg);
+      text-shadow: -5px 0 magenta, 5px 0 cyan; /* Heavy glitch */
+      filter: brightness(1.5);
+    }
+    55% {
+      transform: scale(0.85) skewX(0deg);
+      text-shadow: 0 0 10px #00f3ff; /* Recovery to clean glow */
+      filter: brightness(1);
+    }
+
+    /* PHASE 3: 2.5s - 4.0s (Dynamic Entry / Zoom) */
+    60% {
+      transform: scale(0.85);
+      opacity: 1;
+    }
+    75% {
+      /* Sudden acceleration */
+      transform: scale(2.5);
+      opacity: 0.8;
+      filter: blur(0px);
+    }
+    90% {
+      /* Motion blur simulation via opacity drop and scale */
+      transform: scale(5);
+      opacity: 0;
+      filter: blur(10px);
+    }
+    100% {
+      transform: scale(6);
+      opacity: 0;
+    }
+  }
+</style>
+</head>
+<body>
+
+  <div class="logo-container">
+    <div class="symbol"></div>
+    <span class="text">mundocancel</span>
+  </div>
+
+
+
+</body></html>
