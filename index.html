@@ -1,49 +1,92 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mundo Cancel - Home</title>
-    <style>
-        /* Splash Screen Styles */
-        #splash {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: url('path/to/your/logo.png') no-repeat center center;
-            background-size: cover;
-            opacity: 1;
-            transition: opacity 1s ease-out;
-            z-index: 9999;
-        }
-        body.fade {
-            overflow: hidden;
-        }
-        body.fade #splash {
-            opacity: 0;
-        }
-    </style>
+    <title>Mundo Cancel</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="path-to-your-custom-styles.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
 </head>
 <body>
-    <div id="splash"></div>
-    <div id="content" style="display:none;">
-        <!-- Your normal site content goes here -->
-        <h1>Welcome to Mundo Cancel</h1>
-        <p>Your content here...</p>
+    <!-- Splash Screen -->
+    <div id="splash-screen" class="splash-screen">
+        <img src="path-to-logo-inicio.gif" alt="Loading..." class="splash-logo">
+        <h1>Cargando...</h1>
     </div>
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="#">Mundo Cancel</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item active">
+                    <a class="nav-link" href="#">Inicio <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#productos">Productos</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#contacto">Contacto</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <header class="hero">
+        <div class="container">
+            <h1>Bienvenido a Mundo Cancel</h1>
+            <p>Tu plataforma de soluciones.</p>
+        </div>
+    </header>
+
+    <section id="productos">
+        <div class="container">
+            <h2>Nuestros Productos</h2>
+            <!-- Include your product details here -->
+        </div>
+    </section>
+
+    <section id="contacto">
+        <div class="container">
+            <h2>Contacto</h2>
+            <form>
+                <div class="form-group">
+                    <label for="nombre">Nombre:</label>
+                    <input type="text" class="form-control" id="nombre" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email:</label>
+                    <input type="email" class="form-control" id="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="mensaje">Mensaje:</label>
+                    <textarea class="form-control" id="mensaje" rows="5" required></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary">Enviar</button>
+            </form>
+        </div>
+    </section>
+
+    <div id="map" style="height: 400px;"></div>
     <script>
-        window.onload = function() {
-            setTimeout(function() {
-                document.body.classList.add('fade');
-                setTimeout(function() {
-                    document.getElementById('splash').style.display = 'none';
-                    document.getElementById('content').style.display = 'block';
-                    document.body.classList.remove('fade');
-                }, 1000);
-            }, 4000);
-        };
+        var map = L.map('map').setView([51.505, -0.09], 13);
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { 
+            maxZoom: 19,
+        }).addTo(map);
+    </script>
+
+    <script>
+        // Hide splash screen after 3 seconds
+        setTimeout(function() {
+            document.getElementById('splash-screen').style.display = 'none';
+        }, 3000);
     </script>
 </body>
 </html>
