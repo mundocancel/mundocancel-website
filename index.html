@@ -4,19 +4,23 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mundo Cancel</title>
+    
+    <!-- CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <link rel="stylesheet" href="path-to-your-custom-styles.css">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    
+    <!-- JavaScript -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
     <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <script src="js/main.js" defer></script>
 </head>
 <body>
     <!-- Splash Screen -->
     <div id="splash-screen" class="splash-screen">
-        <img src="path-to-logo-inicio.gif" alt="Loading..." class="splash-logo">
-        <h1>Cargando...</h1>
+        <iframe src="assets/images/logo-inicio.html" frameborder="0" style="width: 100%; height: 100%; border: none;"></iframe>
     </div>
 
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -75,18 +79,9 @@
     </section>
 
     <div id="map" style="height: 400px;"></div>
-    <script>
-        var map = L.map('map').setView([51.505, -0.09], 13);
-        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { 
-            maxZoom: 19,
-        }).addTo(map);
-    </script>
 
-    <script>
-        // Hide splash screen after 3 seconds
-        setTimeout(function() {
-            document.getElementById('splash-screen').style.display = 'none';
-        }, 3000);
-    </script>
+    <footer class="bg-light text-center py-3">
+        <p>&copy; 2024 Mundo Cancel. Todos los derechos reservados.</p>
+    </footer>
 </body>
 </html>
