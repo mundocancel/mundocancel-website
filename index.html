@@ -2,36 +2,46 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mundo Cancel</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>Mundo Cancel | Hyper-Glow Edition</title>
+    
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@300;400;500&display=swap" rel="stylesheet"/>
     
     <!-- CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/logo.css">
     <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
     
     <!-- JavaScript -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
     <script src="js/main.js" defer></script>
 </head>
 <body>
-    <!-- Splash Screen -->
-    <div id="splash-screen" class="splash-screen">
-        <iframe src="assets/images/logo-inicio.html" frameborder="0" style="width: 100%; height: 100%; border: none;"></iframe>
+    <!-- Dynamic Animated Background -->
+    <div class="bg-canvas-container" id="bgContainer">
+        <div class="liquid-layer"></div>
     </div>
 
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand" href="#">Mundo Cancel</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
+    <!-- Splash Screen -->
+    <div id="splash-screen" class="splash-screen silk-card">
+        <iframe src="assets/images/logo-inicio.html" frameborder="0" style="width: 100%; height: 100%; border: none;"></iframe>
+    </div>
+    
+    <!-- Navigation -->
+    <nav class="navbar silk-card navbar-glow">
+        <a class="navbar-brand" href="#">
+            <span class="material-symbols-outlined logo-icon">public</span>
+            Mundo Cancel
+        </a>
+        <button class="navbar-toggler silk-btn" type="button" data-toggle="collapse" data-target="#navbarNav">
+            <span class="material-symbols-outlined">menu</span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav">
                 <li class="nav-item active">
-                    <a class="nav-link" href="#">Inicio <span class="sr-only">(current)</span></a>
+                    <a class="nav-link" href="#">Inicio</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#productos">Productos</a>
@@ -43,45 +53,69 @@
         </div>
     </nav>
 
-    <header class="hero">
+    <!-- Hero Section -->
+    <header class="hero silk-card animate-entry">
         <div class="container">
-            <h1>Bienvenido a Mundo Cancel</h1>
-            <p>Tu plataforma de soluciones.</p>
+            <h1 class="glow-text">Bienvenido a Mundo Cancel</h1>
+            <p class="hero-subtitle">Tu plataforma de soluciones • Hyper-Glow Edition</p>
         </div>
     </header>
 
-    <section id="productos">
+    <!-- Products Section -->
+    <section id="productos" class="animate-entry">
         <div class="container">
-            <h2>Nuestros Productos</h2>
-            <!-- Include your product details here -->
+            <h2 class="section-title glow-text">Nuestros Productos</h2>
+            <div class="silk-card p-4">
+                <p class="text-muted">Explora nuestras soluciones innovadoras.</p>
+                <!-- Include your product details here -->
+            </div>
         </div>
     </section>
 
-    <section id="contacto">
+    <!-- Contact Section -->
+    <section id="contacto" class="animate-entry">
         <div class="container">
-            <h2>Contacto</h2>
-            <form>
-                <div class="form-group">
-                    <label for="nombre">Nombre:</label>
-                    <input type="text" class="form-control" id="nombre" required>
-                </div>
-                <div class="form-group">
-                    <label for="email">Email:</label>
-                    <input type="email" class="form-control" id="email" required>
-                </div>
-                <div class="form-group">
-                    <label for="mensaje">Mensaje:</label>
-                    <textarea class="form-control" id="mensaje" rows="5" required></textarea>
-                </div>
-                <button type="submit" class="btn btn-primary">Enviar</button>
-            </form>
+            <h2 class="section-title glow-text">Contacto</h2>
+            <div class="silk-card p-4">
+                <form>
+                    <div class="form-group">
+                        <label for="nombre">Nombre:</label>
+                        <input type="text" class="silk-input" id="nombre" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email:</label>
+                        <input type="email" class="silk-input" id="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="mensaje">Mensaje:</label>
+                        <textarea class="silk-input" id="mensaje" rows="5" required></textarea>
+                    </div>
+                    <button type="submit" class="silk-btn w-100">
+                        <span class="material-symbols-outlined me-2">send</span>
+                        Enviar
+                    </button>
+                </form>
+            </div>
         </div>
     </section>
 
-    <div id="map" style="height: 400px;"></div>
+    <!-- Map Section -->
+    <section class="animate-entry">
+        <div class="container">
+            <div class="silk-card map-container">
+                <div id="map"></div>
+            </div>
+        </div>
+    </section>
 
-    <footer class="bg-light text-center py-3">
-        <p>&copy; 2024 Mundo Cancel. Todos los derechos reservados.</p>
+    <!-- Footer -->
+    <footer class="text-center py-4">
+        <p class="footer-text">&copy; 2025 Mundo Cancel • Hyper-Glow Edition</p>
     </footer>
+
+    <!-- Floating Action Button -->
+    <div class="fab silk-btn">
+        <span class="material-symbols-outlined">ios_share</span>
+    </div>
 </body>
 </html>
