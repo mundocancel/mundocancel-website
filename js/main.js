@@ -1,4 +1,131 @@
-// ========================================
+  ` + svgContent;
+            
+            svg.innerHTML = svgContent;
+            
+            // Update stats
+            const area = (w * h) / 10000; // cm² to m²
+            const perimeter = (2 * (w + h)) / 100; // cm to m
+            document.getElementById('areaValue').textContent = area.toFixed(2);
+            document.getElementById('perimeterValue').textContent = perimeter.toFixed(2);
+            document.getElementById('widthValue').textContent = w + ' cm';
+            document.getElementById('heightValue').textContent = h + ' cm';
+        }
+
+        // ============================================
+        // EVENT LISTENERS
+        // ============================================
+        document.getElementById('widthSlider').addEventListener('input', function() {
+            currentWidth = parseInt(this.value);
+            if (!specialCategories.includes(currentCategory)) updateCroquis();
+        });
+        
+        document.getElementById('heightSlider').addEventListener('input', function() {
+            currentHeight = parseInt(this.value);
+            if (!specialCategories.includes(currentCategory)) updateCroquis();
+        });
+
+        // Mobile menu
+        const mobileToggle = document.getElementById('mobileToggle');
+        const navMenu = document.getElementById('navMenu');
+        
+        mobileToggle.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+        });
+        
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', () => {
+                navMenu.classList.remove('active');
+            });
+        });
+
+        // Header scroll effect
+        const header = document.getElementById('header');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+
+        // ============================================
+        // GSAP ANIMATIONS
+        // ============================================
+        gsap.registerPlugin(ScrollTrigger);
+        
+        function initAnimations() {
+            // Body fade in
+            document.body.classList.add('loaded');
+            
+            // Hero animations
+            const tl = gsap.timeline();
+            tl.from('.hero-badge', { opacity: 0, y: 20, duration: 0.7, ease: 'power3.out' })
+              .from('.hero-title', { opacity: 0, y: 30, duration: 0.8, ease: 'power3.out' }, '-=0.3')
+              .from('.hero-subtitle', { opacity: 0, y: 20, duration: 0.7, ease: 'power3.out' }, '-=0.4')
+              .from('.hero-cta', { opacity: 0, y: 15, duration: 0.6, ease: 'power3.out' }, '-=0.3');
+            
+            // Parallax hero bg
+            gsap.to('#heroBg', {
+                y: 100,
+                ease: 'none',
+                scrollTrigger: {
+                    trigger: '.hero',
+                    start: 'top top',
+                    end: 'bottom top',
+                    scrub: true
+                }
+            });
+            
+            // Category cards stagger
+            gsap.from('.category-card', {
+                opacity: 0,
+                y: 60,
+                duration: 0.8,
+                stagger: 0.08,
+                ease: 'power3.out',
+                scrollTrigger: {
+                    trigger: '.categories-grid',
+                    start: 'top 85%',
+                    toggleActions: 'play none none none'
+                }
+            });
+            
+            // Cotizador section
+            gsap.from('.cotizador-section', {
+                opacity: 0,
+                y: 40,
+                duration: 0.9,
+                ease: 'power3.out',
+                scrollTrigger: {
+                    trigger: '.cotizador-section',
+                    start: 'top 80%',
+                    toggleActions: 'play none none none'
+                }
+            });
+            
+            // Inteligente section
+            gsap.from('.inteligente-section', {
+                opacity: 0,
+                y: 50,
+                duration: 1,
+                ease: 'power3.out',
+                scrollTrigger: {
+                    trigger: '.inteligente-section',
+                    start: 'top 85%',
+                    toggleActions: 'play none none none'
+                }
+            });
+        }
+
+        // ============================================
+        // INIT
+        // ============================================
+        document.addEventListener('DOMContentLoaded', () => {
+            generateCategoryCards();
+            generateCategoryButtons();
+            selectCategory('corredizo');
+            initAnimations();
+        });// ========================================
 // Premium Landing Page - JavaScript
 // ========================================
 
